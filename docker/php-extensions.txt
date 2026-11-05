@@ -17,6 +17,7 @@ pdo_mysql   # the database
 ldap        # LDAP / Active Directory sign-in and directory sync
 zip         # LMS SCORM course upload, RFP Builder .docx text, document search in .docx/.xlsx
 intl        # Domains: international domain names (xn--)
+imap
 
 # NOT IN THE IMAGE, ON PURPOSE
 # imap      PHP 8.4 removed it from PHP itself (it is now a PECL add-on), and the
