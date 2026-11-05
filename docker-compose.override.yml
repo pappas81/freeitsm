@@ -1,17 +1,17 @@
- services:
-         app:
-           volumes:
-             - uploads:/var/www/html/uploads
-             - recordings:/var/www/html/recordings
-             - lms-content:/var/www/html/lms/content
-             - contracts-rfp-builder-uploads:/var/www/html/contracts/rfp-builder/uploads
-             - system-uploads-branding:/var/www/html/system/uploads/branding
-             - war-room-attachments:/var/www/html/war-room/attachments
+services:
+        app:
+          volumes:
+            - uploads:/var/www/html/uploads
+            - recordings:/var/www/html/recordings
+            - lms-content:/var/www/html/lms/content
+            - contracts-rfp-builder-uploads:/var/www/html/contracts/rfp-builder/uploads
+            - system-uploads-branding:/var/www/html/system/uploads/branding
+            - war-room-attachments:/var/www/html/war-room/attachments
        
-       volumes:
-         uploads:
-         recordings:
-         lms-content:
-         contracts-rfp-builder-uploads:
-         system-uploads-branding:
-         war-room-attachments:
+      volumes:
+        uploads:
+        recordings:
+        lms-content:
+        contracts-rfp-builder-uploads:
+        system-uploads-branding:
+        war-room-attachments:
