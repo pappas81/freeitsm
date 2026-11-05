@@ -1,4 +1,4 @@
-FROM php:8.4-apache
+FROM php:8.3-apache-bookworm
 
 # PHP extensions beyond the ones PHP builds in - the list, and why each one, is
 # docker/php-extensions.txt (GH #207: until 4.0.0 this installed only pdo_mysql,
