@@ -14,11 +14,11 @@ services:
     # is the thing version numbers exist to prevent.
     build: .
     ports:
-      - "8080:80"
+      - "34080:80"
       # HTTPS. Only answers once a certificate has been made on System -> Docker
       # and the container restarted. Change to "443:443" to drop the :8443 from
       # the address, if nothing else on the host already uses port 443.
-      - "8443:443"
+      - "34443:443"
     depends_on:
       db:
         condition: service_healthy
