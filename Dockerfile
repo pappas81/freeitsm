@@ -13,9 +13,16 @@ FROM php:8.3-apache-bookworm
 RUN set -eux; \
     savedAptMark="$(apt-mark showmanual)"; \
     apt-get update; \
-    apt-get install -y --no-install-recommends libldap-dev libzip-dev libicu-dev; \
+    apt-get install -y --no-install-recommends \
+        libldap-dev \
+        libzip-dev \
+        libicu-dev \
+        libc-client2007e-dev \
+        libkrb5-dev \
+        libssl-dev; \
     docker-php-ext-configure ldap --with-libdir="lib/$(dpkg-architecture --query DEB_HOST_MULTIARCH)"; \
-    docker-php-ext-install -j"$(nproc)" pdo_mysql ldap zip intl; \
+    docker-php-ext-configure imap --with-kerberos --with-imap-ssl; \
+    docker-php-ext-install -j"$(nproc)" pdo_mysql ldap zip intl imap; \
     apt-mark auto '.*' > /dev/null; \
     [ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
     find /usr/local -type f -executable -exec ldd '{}' ';' \
@@ -23,7 +30,6 @@ RUN set -eux; \
         | sort -u | xargs -r dpkg-query --search | awk 'sub(":$", "", $1) { print $1 }' | sort -u | xargs -r apt-mark manual; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
     rm -rf /var/lib/apt/lists/*
-
 # 🔴 The smoke check (GH #207). Every extension in the list must load, or the
 # build stops here - for both architectures the release workflow builds - and
 # nothing is published.
